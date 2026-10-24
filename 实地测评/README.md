@@ -16,23 +16,23 @@
 
 ### 静止
 
-![静止状态的三轴加速度波形图](步态波形图PNG/standing.png)
+![静止状态的三轴加速度波形图](https://raw.githubusercontent.com/m-1229/ICEC-2026-0139-BAIJUNMENG/main/%E5%AE%9E%E5%9C%B0%E6%B5%8B%E8%AF%84/%E6%AD%A5%E6%80%81%E6%B3%A2%E5%BD%A2%E5%9B%BEPNG/standing.png)
 
 ### 平地慢走
 
-![平地慢走状态的三轴加速度波形图](步态波形图PNG/walking.png)
+![平地慢走状态的三轴加速度波形图](https://raw.githubusercontent.com/m-1229/ICEC-2026-0139-BAIJUNMENG/main/%E5%AE%9E%E5%9C%B0%E6%B5%8B%E8%AF%84/%E6%AD%A5%E6%80%81%E6%B3%A2%E5%BD%A2%E5%9B%BEPNG/walking.png)
 
 ### 上楼
 
-![上楼状态的三轴加速度波形图](步态波形图PNG/stairs-up.png)
+![上楼状态的三轴加速度波形图](https://raw.githubusercontent.com/m-1229/ICEC-2026-0139-BAIJUNMENG/main/%E5%AE%9E%E5%9C%B0%E6%B5%8B%E8%AF%84/%E6%AD%A5%E6%80%81%E6%B3%A2%E5%BD%A2%E5%9B%BEPNG/stairs-up.png)
 
 ### 下楼
 
-![下楼状态的三轴加速度波形图](步态波形图PNG/stairs-down.png)
+![下楼状态的三轴加速度波形图](https://raw.githubusercontent.com/m-1229/ICEC-2026-0139-BAIJUNMENG/main/%E5%AE%9E%E5%9C%B0%E6%B5%8B%E8%AF%84/%E6%AD%A5%E6%80%81%E6%B3%A2%E5%BD%A2%E5%9B%BEPNG/stairs-down.png)
 
 ### 平地快跑
 
-![平地快跑状态的三轴加速度波形图](步态波形图PNG/running.png)
+![平地快跑状态的三轴加速度波形图](https://raw.githubusercontent.com/m-1229/ICEC-2026-0139-BAIJUNMENG/main/%E5%AE%9E%E5%9C%B0%E6%B5%8B%E8%AF%84/%E6%AD%A5%E6%80%81%E6%B3%A2%E5%BD%A2%E5%9B%BEPNG/running.png)
 
 ## 原始采样数据表
 
