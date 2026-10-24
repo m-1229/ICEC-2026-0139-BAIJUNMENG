@@ -94,10 +94,4 @@ S = std(|a|)
 node .\生成可视化.mjs
 ```
 
-采样数据更新后，还需同步更新 `charts/` 中对应的 PNG 图片预览。
-
-如需同步更新 README 中使用的 PNG 预览图，再运行以下命令（需要安装 Microsoft Edge）：
-
-```powershell
-.\生成GitHub图片.ps1
-```
+采样数据更新后，还需同步更新 `charts/` 中对应的 PNG 图片预览，再检查 README 中的图片是否正常显示。
