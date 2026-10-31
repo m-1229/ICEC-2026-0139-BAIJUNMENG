@@ -8,34 +8,9 @@
 | --- | --- |
 | [`静止.csv`](静止.csv)、[`平地慢走.csv`](平地慢走.csv)、[`上楼.csv`](上楼.csv)、[`下楼.csv`](下楼.csv)、[`平地快跑.csv`](平地快跑.csv) | 五种状态的完整原始采样 CSV，可下载用于 Excel 等工具分析 |
 | `步态波形图PNG/` | 五种状态的 PNG 波形图，目录名说明了图片内容和格式 |
-| `原始数据截图/` | 用户提供的 Phyphox 手机应用截图，按状态分类保存 |
 | [`样本统计.csv`](样本统计.csv) | 每种状态的采样点数、时长、采样率及加速度模长统计 |
 | [`采样数据表格预览.md`](采样数据表格预览.md) | 每种状态的前 5 条采样记录，方便直接浏览 |
 | [`生成可视化.mjs`](生成可视化.mjs) | 使用 Node.js 内置模块生成本地 SVG 源图和统计表，无需安装第三方依赖 |
-
-## 原始数据截图（Phyphox）
-
-以下为用户提供的 Phyphox 手机应用截图，附件对应状态已按用户确认的顺序标注。截图文件从原附件直接复制，未经裁剪、重绘或数值修改；它们是原始采集界面的佐证，不是根据 CSV 重新生成的图表。下方另列的 PNG 波形图则由处理后的 CSV 绘制，两类图片来源不同。
-
-### 静止
-
-![静止状态的 Phyphox 原始数据截图](https://raw.githubusercontent.com/m-1229/ICEC-2026-0139-BAIJUNMENG/main/%E5%AE%9E%E5%9C%B0%E6%B5%8B%E8%AF%84/%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E6%88%AA%E5%9B%BE/still-phyphox.jpg)
-
-### 平地慢走
-
-![平地慢走状态的 Phyphox 原始数据截图](https://raw.githubusercontent.com/m-1229/ICEC-2026-0139-BAIJUNMENG/main/%E5%AE%9E%E5%9C%B0%E6%B5%8B%E8%AF%84/%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E6%88%AA%E5%9B%BE/walking-phyphox.jpg)
-
-### 上楼
-
-![上楼状态的 Phyphox 原始数据截图](https://raw.githubusercontent.com/m-1229/ICEC-2026-0139-BAIJUNMENG/main/%E5%AE%9E%E5%9C%B0%E6%B5%8B%E8%AF%84/%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E6%88%AA%E5%9B%BE/stairs-up-phyphox.jpg)
-
-### 下楼
-
-![下楼状态的 Phyphox 原始数据截图](https://raw.githubusercontent.com/m-1229/ICEC-2026-0139-BAIJUNMENG/main/%E5%AE%9E%E5%9C%B0%E6%B5%8B%E8%AF%84/%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E6%88%AA%E5%9B%BE/stairs-down-phyphox.jpg)
-
-### 平地快跑
-
-![平地快跑状态的 Phyphox 原始数据截图](https://raw.githubusercontent.com/m-1229/ICEC-2026-0139-BAIJUNMENG/main/%E5%AE%9E%E5%9C%B0%E6%B5%8B%E8%AF%84/%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E6%88%AA%E5%9B%BE/running-phyphox.jpg)
 
 ## 波形图
 
