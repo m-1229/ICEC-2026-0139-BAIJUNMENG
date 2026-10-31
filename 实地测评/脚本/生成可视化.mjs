@@ -2,8 +2,10 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const outputDirectory = path.dirname(fileURLToPath(import.meta.url));
-const chartDirectory = path.join(outputDirectory, "可视化图");
+const projectDirectory = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const dataDirectory = path.join(projectDirectory, "数据");
+const sampleDirectory = path.join(dataDirectory, "原始采样");
+const chartDirectory = path.join(projectDirectory, "图表", "源图");
 const gravity = 9.81;
 const samples = [
   { file: "静止.csv", label: "静止" },
@@ -164,7 +166,7 @@ function summarize(label, rows) {
 await mkdir(chartDirectory, { recursive: true });
 const summaries = [];
 for (const sample of samples) {
-  const csv = await readFile(path.join(outputDirectory, sample.file), "utf8");
+  const csv = await readFile(path.join(sampleDirectory, sample.file), "utf8");
   const rows = parseCsv(csv, sample.file);
   summaries.push(summarize(sample.label, rows));
   await writeFile(path.join(chartDirectory, `${sample.label}.svg`), renderChart(sample.label, rows), "utf8");
@@ -181,5 +183,5 @@ const summaryRows = summaries.map(item => [
   format(item.windowMedian),
   format(item.windowP90),
 ].join(","));
-await writeFile(path.join(outputDirectory, "样本统计.csv"), `\uFEFF${summaryHeader}\n${summaryRows.join("\n")}\n`, "utf8");
-console.log(`已生成 ${summaries.length} 张 SVG 波形图和样本统计.csv。`);
+await writeFile(path.join(dataDirectory, "样本统计.csv"), `\uFEFF${summaryHeader}\n${summaryRows.join("\n")}\n`, "utf8");
+console.log(`已生成 ${summaries.length} 张 SVG 源图和数据/样本统计.csv。`);
