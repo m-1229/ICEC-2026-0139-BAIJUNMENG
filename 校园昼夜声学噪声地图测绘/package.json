@@ -1,0 +1,11 @@
+{
+  "name": "icec-2026-0139-campus-noise-map",
+  "version": "1.0.0",
+  "description": "校园昼夜声学噪声地图测绘 · 15 组声学数据 + 雷达图 + 超标提醒光效逻辑",
+  "type": "module",
+  "scripts": {
+    "test": "node src/light_controller.test.js",
+    "build": "python analysis/analyze.py && python analysis/build_site.py"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,14 @@
+# 构建中间产物
+_shots/
+_raw/
+__pycache__/
+*.pyc
+
+# 编辑器与系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 依赖（本项目零依赖）
+node_modules/
