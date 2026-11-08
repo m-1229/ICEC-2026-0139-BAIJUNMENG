@@ -701,8 +701,7 @@ legend($("#legend1"), ser1, "leaq"); legend($("#legend2"), ser2, "peak");
     }
     const c = colorFor(r.leaq - r.limit);
     const w = x(r.leaq) - padL;
-    el("rect", { x: padL, y: y + 6, width: 0, height: 15, rx: 4, fill: c, opacity: .85 }, svg)
-      .appendChild(el("animate", { attributeName: "width", from: 0, to: w, dur: "0.6s", fill: "freeze" }));
+    el("rect", { x: padL, y: y + 6, width: w, height: 15, rx: 4, fill: c, opacity: .85 }, svg);
     // 限值线
     el("line", {
       x1: x(r.limit), y1: y + 2, x2: x(r.limit), y2: y + 25,
