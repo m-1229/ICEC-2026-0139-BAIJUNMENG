@@ -85,6 +85,7 @@ tbody td{padding:9px 12px;border-bottom:1px solid var(--line2);text-align:right;
 tbody td:first-child,tbody td:nth-child(2),tbody td:nth-child(3){text-align:left}
 tbody tr:hover td{background:#fbfcfe}
 tbody tr.pending td{color:var(--mute);background:#fcfcfd}
+sup.qc{color:#c2410c;font-weight:700;font-size:10px;margin-left:1px;cursor:help}
 tbody tr.sum td{background:#f8fafc;font-weight:700}
 tfoot td{padding:9px 12px;background:#f8fafc;font-weight:700;border-top:1px solid var(--line)}
 .badge{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;
@@ -205,10 +206,10 @@ code{font-family:var(--mono);font-size:12.5px;background:#f1f5f9;padding:1px 5px
     <div class="chips">
       <span class="chip">点位 <b>5 处</b></span>
       <span class="chip">时段 <b>早 / 午 / 晚</b></span>
-      <span class="chip">数据组 <b id="chipDone">12 / 15</b></span>
+      <span class="chip">数据组 <b id="chipDone">15 / 15</b></span>
       <span class="chip">采样窗口 <b>20.6 – 28.1 s</b></span>
       <span class="chip">仪器 <b>Decibel X（A 计权）</b></span>
-      <span class="chip">采样期 <b>2026-11-02 – 11-08</b></span>
+      <span class="chip">采样期 <b>2026-11-02 – 11-11</b></span>
     </div>
   </section>
 
@@ -397,7 +398,7 @@ code{font-family:var(--mono);font-size:12.5px;background:#f1f5f9;padding:1px 5px
 
 <footer>
   <div class="wrap">
-    ICEC-2026-0139 · 课题 06 校园昼夜声学噪声地图测绘 &nbsp;·&nbsp; 数据采集 2026-11-02 – 11-08 &nbsp;·&nbsp;
+    ICEC-2026-0139 · 课题 06 校园昼夜声学噪声地图测绘 &nbsp;·&nbsp; 数据采集 2026-11-02 – 11-11 &nbsp;·&nbsp;
     仪器 Decibel X（iPhone 内置麦克风，A 计权）&nbsp;·&nbsp; 报告生成于 <span id="genDate"></span>
   </div>
 </footer>
@@ -423,6 +424,16 @@ const rows = DATA.rows;
 const done = rows.filter(r => !r.pending);
 const PERIODS = ["早", "中", "晚"];
 const LOCS = DATA.locations;
+
+/* 现场记录的数据质量备注（非仪器导出字段，由测量人员现场观察补充） */
+const QC = {
+  G09: {
+    tag: "风噪影响",
+    note: "晚间测量期间有风，主干道点位开阔无遮挡，风直接吹击传声器，风致湍流噪声叠加进 A 计权读数。"
+        + "该组 Leq / Peak 偏高于该点位夜间交通噪声本底，宜作为上限参考而非定值使用。",
+  },
+};
+const qcOf = no => QC[no] || null;
 
 function statusOf(r) {
   if (r.pending) return "pending";
@@ -475,7 +486,9 @@ function esc(s) { return String(s).replace(/[<>&]/g, c => ({ "<": "&lt;", ">": "
       `。补测文件按 <code>&lt;时段&gt;&lt;点位&gt;.zip</code> 放进 <code>_raw/</code> 后重跑 <code>python analysis/analyze.py</code> 即自动并入本表与全部图表，无需改代码。`;
     cov.classList.add("warn");
   } else {
-    cov.innerHTML = `<b>数据完整性：</b>15 组全部完成。`;
+    cov.innerHTML = `<b>数据完整性：</b>15 组全部完成，共 `
+      + `${done.reduce((a, r) => a + r.samples, 0).toLocaleString("en-US")} 条 1 s 等效声级样本。`
+      + `带 <sup class="qc">*</sup> 的组存在现场干扰，判读时需扣除影响（详见下方「数据质量说明」）。`;
   }
 })();
 
@@ -495,8 +508,9 @@ function esc(s) { return String(s).replace(/[<>&]/g, c => ({ "<": "&lt;", ">": "
     const cls = r.leaq > r.limit ? "b-no" : "b-ok";
     const badge = r.leaq > r.limit ? "超标" : "达标";
     const dCls = r.leaq - r.limit > 10 ? "hi-crit" : r.leaq - r.limit > 0 ? "hi-bad" : "hi-ok";
+    const q = qcOf(r.no);
     return `<tr>
-      <td>${r.no}</td><td>${r.loc}</td><td>${r.period_label}</td>
+      <td>${r.no}${q ? `<sup class="qc" title="${esc(q.tag)}：${esc(q.note)}">*</sup>` : ""}</td><td>${r.loc}</td><td>${r.period_label}</td>
       <td style="color:var(--sub)">${fmtDate(r.date)}</td>
       <td>${fmt(r.duration_s)}</td><td>${r.samples}</td>
       <td class="num-strong">${fmt(r.leaq)}</td><td class="num-strong">${fmt(r.peak)}</td>
@@ -763,9 +777,14 @@ legend($("#legend1"), ser1, "leaq"); legend($("#legend2"), ser2, "peak");
     const g = done.filter(r => r.loc === l);
     return g.length ? { l, v: g.reduce((s, r) => s + r.leaq, 0) / g.length } : null;
   }).filter(Boolean).sort((a, b) => b.v - a.v);
+  const g = no => rows.find(r => r.no === no) || {};
   $("#findings").innerHTML = [
     `<b>整体超标面广：</b>已完成的 ${done.length} 组中有 ${over.length} 组 Leq 超过所在功能区限值，超标率 ${Math.round(over.length / done.length * 100)}%，校园声环境整体处于「超标运行」状态。`,
-    `<b>昼间压力大于夜间：</b>昼间 ${dayRows.length} 组中 ${dayBad} 组超标，夜间 ${night.length} 组中 ${nightBad} 组超标；夜间绝对声级虽回落，但因夜间限值更严（1 类区 45 dB），图书馆、操场夜间仍判定超标。`,
+    `<b>昼间压力大于夜间：</b>昼间 ${dayRows.length} 组中 ${dayBad} 组超标（${Math.round(dayBad / dayRows.length * 100)}%），夜间 ${night.length} 组中 ${nightBad} 组超标（${Math.round(nightBad / night.length * 100)}%）。`
+      + `夜间绝对声级普遍回落，但夜间限值更严（1 类区 45 dB、4a 类区 55 dB），图书馆、操场、主干道夜间仍判定超标 —— 属「限值收紧型超标」而非声源变强。`,
+    `<b>主干道昼夜落差偏小：</b>早 ${fmt(g("G07").leaq)} / 午 ${fmt(g("G08").leaq)} dB 基本贴着 4a 类区昼间 70 dB 限值运行，说明路段已处于饱和通行状态；`
+      + `夜间 ${fmt(g("G09").leaq)} dB 只比昼间低 ${fmt((g("G07").leaq + g("G08").leaq) / 2 - g("G09").leaq)} dB，远小于交通干线应有的 8–12 dB 回落，`
+      + `主要受晚间风噪污染（见文末数据质量说明），扣除后真实夜间声级估值仍高于 55 dB。`,
     `<b>点位排序（按组内均值，由高到低）：</b>${byLoc.map(x => `${x.l} ${fmt(x.v)}`).join(" &gt; ")} dB(A)，食堂与实训室走廊为校园「声热点」。`,
     `<b>极值：</b>最吵为 ${worst.loc} ${worst.period_label} ${fmt(worst.leaq)} dB(A)，最安静为 ${quietest.loc} ${quietest.period_label} ${fmt(quietest.leaq)} dB(A)，相差 ${fmt(worst.leaq - quietest.leaq)} dB。`
   ].map(s => `<li>${s}</li>`).join("");
@@ -774,6 +793,7 @@ legend($("#legend1"), ser1, "leaq"); legend($("#legend2"), ser2, "peak");
     <li>食堂午间 Leq ${fmt((rows.find(r => r.loc === "食堂" && r.period === "中") || {}).leaq)} dB、峰值 ${fmt((rows.find(r => r.loc === "食堂" && r.period === "中") || {}).peak)} dB，为全场景最高，符合就餐高峰人群交谈 + 餐具碰撞的典型声学特征。</li>
     <li>实训室走廊早/午间 ${fmt((rows.find(r => r.loc === "实训室" && r.period === "早") || {}).leaq)} / ${fmt((rows.find(r => r.loc === "实训室" && r.period === "中") || {}).leaq)} dB，晚间骤降至 ${fmt((rows.find(r => r.loc === "实训室" && r.period === "晚") || {}).leaq)} dB，说明其噪声几乎全部来自课间人流而非设备。</li>
     <li>图书馆早间 ${fmt((rows.find(r => r.loc === "图书馆" && r.period === "早") || {}).leaq)} dB 为全场最优，午间升至 ${fmt((rows.find(r => r.loc === "图书馆" && r.period === "中") || {}).leaq)} dB、夜间 ${fmt((rows.find(r => r.loc === "图书馆" && r.period === "晚") || {}).leaq)} dB，需关注自习区"安静区不安静"的反差。</li>
+    <li>主干道早/午间 ${fmt((rows.find(r => r.loc === "主干道" && r.period === "早") || {}).leaq)} / ${fmt((rows.find(r => r.loc === "主干道" && r.period === "中") || {}).leaq)} dB，紧贴 70 dB 限值无余量；晚间 ${fmt((rows.find(r => r.loc === "主干道" && r.period === "晚") || {}).leaq)} dB，其中含风噪抬升，折算后仍在 55 dB 夜间限值之上。</li>
     <li>操场早间 ${fmt((rows.find(r => r.loc === "操场" && r.period === "早") || {}).leaq)} dB、峰值 ${fmt((rows.find(r => r.loc === "操场" && r.period === "早") || {}).peak)} dB，呈现典型跑操 + 广播瞬态冲击；午间回落至 ${fmt((rows.find(r => r.loc === "操场" && r.period === "中") || {}).leaq)} dB 说明其噪声与作息强相关。</li>
   </ul>`;
 
@@ -782,14 +802,30 @@ legend($("#legend1"), ser1, "leaq"); legend($("#legend2"), ser2, "peak");
     `实训室走廊按课间人流做分流与错峰，走廊两端设吸声板，避免混响叠加。`,
     `图书馆自习区设置分区提示：入口灯柱常绿，入馆后声级升高即转黄，形成"无声提醒"。`,
     `操场广播与跑操集中时段管理，边界处设隔声绿篱；早间 07:00 前避免高音广播。`,
+    `主干道临校一侧加装 3 m 高隔声屏并配合绿化带，重点压 500 Hz 以下轮胎/路面噪声；早高峰设潮汐车道限速 30 km/h。`,
+    `后续复测统一加装防风罩（foam windscreen），风速 >3 m/s 时暂停记录，避免风噪污染夜间本底数据。`,
     `部署光效提醒终端 5 套（与本次 5 个点位一一对应），夜间统一降亮 45%，形成常态化自监测闭环。`
   ].map(s => `<li>${s}</li>`).join("");
 
   const miss = rows.filter(r => r.pending);
-  $("#pendingNote").innerHTML = miss.length
-    ? `<b>数据待补：</b>主干道（交通干线两侧，4a 类区，昼 70 / 夜 55 dB）3 组数据尚未到位，当前报告中该点位以「待补测」占位。
-       补齐后雷达图第 3 轴与对照图第 7–9 行会自动填充，光效逻辑与阈值体系无需修改。`
-    : `<b>数据完整性提示：</b>15 组已全部入库，雷达图与对照图均完整。`;
+  const qcRows = done.filter(r => qcOf(r.no));
+  let html = miss.length
+    ? `<b>数据待补：</b>${miss.map(r => `${r.loc} ${r.period_label}`).join("、")} 尚未到位，当前以「待补测」占位。`
+    : `<b>数据完整性：</b>15 组已全部入库，雷达图、对照图与仿真器均完整。`;
+  if (qcRows.length) {
+    html += `<br><b>数据质量说明：</b>` + qcRows.map(r => {
+      const q = qcOf(r.no);
+      return `第 ${r.no} 组（${r.loc} ${r.period_label}）— <b>${q.tag}</b>。${q.note}`;
+    }).join("<br>");
+    html += `<br><span style="color:var(--mute)">影响量级判断：主干道夜间实测 ${fmt((rows.find(r=>r.no==="G09")||{}).leaq)} dB，`
+      + `仅比昼间均值 ${fmt((((rows.find(r=>r.no==="G07")||{}).leaq + (rows.find(r=>r.no==="G08")||{}).leaq) / 2))} dB 低 `
+      + `${fmt((((rows.find(r=>r.no==="G07")||{}).leaq + (rows.find(r=>r.no==="G08")||{}).leaq) / 2) - ((rows.find(r=>r.no==="G09")||{}).leaq))} dB；`
+      + `交通干线夜间车流量大幅下降，正常应有 8–12 dB 的回落。缺口即风噪抬升量，据此可推断该点位真实夜间 Leq 约在 `
+      + `${Math.round(((rows.find(r=>r.no==="G09")||{}).leaq || 0) - 10)}–${Math.round(((rows.find(r=>r.no==="G09")||{}).leaq || 0) - 6)} dB(A) 区间，`
+      + `仍高于 4a 类区夜间 55 dB 限值，结论方向不变，但「+12.1 dB」不应直接引用。</span>`;
+  }
+  $("#pendingNote").innerHTML = html;
+  $("#pendingNote").classList.toggle("warn", true);
 })();
 
 /* =========================================================
