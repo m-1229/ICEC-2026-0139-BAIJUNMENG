@@ -437,10 +437,31 @@ const LOCS = DATA.locations;
 
 /* 现场记录的数据质量备注（非仪器导出字段，由测量人员现场观察补充） */
 const QC = {
+  G03: {
+    tag: "闭馆音乐",
+    note: "晚间测量时图书馆已响起闭馆音乐，馆内扩声系统持续播放，读数为「闭馆音乐 + 馆内背景」的叠加值，"
+        + "不能代表图书馆夜间声环境本底。",
+    detail: () => {
+      const r = rows.find(x => x.no === "G03") || {};
+      return `该组 σ = ${fmt(r.sd, 2)} dB、L10−L90 仅 ${fmt(r.l10 - r.l90)} dB，窗口内起伏很小；`
+        + `Peak ${fmt(r.peak)} dB 与 Leq ${fmt(r.leaq)} dB 只差 ${fmt(r.peak - r.leaq)} dB。`
+        + `这种「声级高但极稳定」的形态符合扩声系统连续发声的特征，而不像人流偶发噪声（后者 σ 通常 > 3 dB）。`
+        + `闭馆音乐与馆内背景在频段上重叠，单次录音无法拆分，故该组不作夜间本底值使用；`
+        + `若要评价图书馆夜间本底，应在闭馆音乐结束后补测 5–10 min。`;
+    },
+  },
   G09: {
     tag: "风噪影响",
     note: "晚间测量期间有风，主干道点位开阔无遮挡，风直接吹击传声器，风致湍流噪声叠加进 A 计权读数。"
         + "该组 Leq / Peak 偏高于该点位夜间交通噪声本底，宜作为上限参考而非定值使用。",
+    detail: () => {
+      const g = no => rows.find(x => x.no === no) || {};
+      const dayAvg = (g("G07").leaq + g("G08").leaq) / 2;
+      return `影响量级判断：主干道夜间实测 ${fmt(g("G09").leaq)} dB，仅比昼间均值 ${fmt(dayAvg)} dB 低 `
+        + `${fmt(dayAvg - g("G09").leaq)} dB；交通干线夜间车流量大幅下降，正常应有 8–12 dB 的回落。`
+        + `缺口即风噪抬升量，据此可推断该点位真实夜间 Leq 约在 ${Math.round(g("G09").leaq - 10)}–${Math.round(g("G09").leaq - 6)} dB(A) 区间，`
+        + `仍高于 4a 类区夜间 55 dB 限值，结论方向不变，但「+12.1 dB」不应直接引用。`;
+    },
   },
 };
 const qcOf = no => QC[no] || null;
@@ -791,7 +812,8 @@ legend($("#legend1"), ser1, "leaq"); legend($("#legend2"), ser2, "peak");
   $("#findings").innerHTML = [
     `<b>整体超标面广：</b>已完成的 ${done.length} 组中有 ${over.length} 组 Leq 超过所在功能区限值，超标率 ${Math.round(over.length / done.length * 100)}%，校园声环境整体处于「超标运行」状态。`,
     `<b>昼间压力大于夜间：</b>昼间 ${dayRows.length} 组中 ${dayBad} 组超标（${Math.round(dayBad / dayRows.length * 100)}%），夜间 ${night.length} 组中 ${nightBad} 组超标（${Math.round(nightBad / night.length * 100)}%）。`
-      + `夜间绝对声级普遍回落，但夜间限值更严（1 类区 45 dB、4a 类区 55 dB），图书馆、操场、主干道夜间仍判定超标 —— 属「限值收紧型超标」而非声源变强。`,
+      + `夜间绝对声级普遍回落，但夜间限值更严（1 类区 45 dB、4a 类区 55 dB），图书馆、操场、主干道夜间仍判定超标 —— 主要属「限值收紧型超标」而非声源变强。`,
+      + `其中图书馆晚间（G03）含闭馆音乐叠加、主干道晚间（G09）含风噪抬升，二者需按文末数据质量说明扣除后判读。`,
     `<b>主干道昼夜落差偏小：</b>早 ${fmt(g("G07").leaq)} / 午 ${fmt(g("G08").leaq)} dB 基本贴着 4a 类区昼间 70 dB 限值运行，说明路段已处于饱和通行状态；`
       + `夜间 ${fmt(g("G09").leaq)} dB 只比昼间低 ${fmt((g("G07").leaq + g("G08").leaq) / 2 - g("G09").leaq)} dB，远小于交通干线应有的 8–12 dB 回落，`
       + `主要受晚间风噪污染（见文末数据质量说明），扣除后真实夜间声级估值仍高于 55 dB。`,
@@ -802,7 +824,7 @@ legend($("#legend1"), ser1, "leaq"); legend($("#legend2"), ser2, "peak");
   $("#concl1").innerHTML = `<ul class="tight">
     <li>食堂午间 Leq ${fmt((rows.find(r => r.loc === "食堂" && r.period === "中") || {}).leaq)} dB、峰值 ${fmt((rows.find(r => r.loc === "食堂" && r.period === "中") || {}).peak)} dB，为全场景最高，符合就餐高峰人群交谈 + 餐具碰撞的典型声学特征。</li>
     <li>实训室走廊早/午间 ${fmt((rows.find(r => r.loc === "实训室" && r.period === "早") || {}).leaq)} / ${fmt((rows.find(r => r.loc === "实训室" && r.period === "中") || {}).leaq)} dB，晚间骤降至 ${fmt((rows.find(r => r.loc === "实训室" && r.period === "晚") || {}).leaq)} dB，说明其噪声几乎全部来自课间人流而非设备。</li>
-    <li>图书馆早间 ${fmt((rows.find(r => r.loc === "图书馆" && r.period === "早") || {}).leaq)} dB 为全场最优，午间升至 ${fmt((rows.find(r => r.loc === "图书馆" && r.period === "中") || {}).leaq)} dB、夜间 ${fmt((rows.find(r => r.loc === "图书馆" && r.period === "晚") || {}).leaq)} dB，需关注自习区"安静区不安静"的反差。</li>
+    <li>图书馆早间 ${fmt((rows.find(r => r.loc === "图书馆" && r.period === "早") || {}).leaq)} dB 为全场最优，午间升至 ${fmt((rows.find(r => r.loc === "图书馆" && r.period === "中") || {}).leaq)} dB，反映午间进出馆人流；夜间 ${fmt((rows.find(r => r.loc === "图书馆" && r.period === "晚") || {}).leaq)} dB 系<b>闭馆音乐播放期间</b>所测，属扩声系统叠加值，不能直接判为阅览区噪声恶化（见文末数据质量说明）。</li>
     <li>主干道早/午间 ${fmt((rows.find(r => r.loc === "主干道" && r.period === "早") || {}).leaq)} / ${fmt((rows.find(r => r.loc === "主干道" && r.period === "中") || {}).leaq)} dB，紧贴 70 dB 限值无余量；晚间 ${fmt((rows.find(r => r.loc === "主干道" && r.period === "晚") || {}).leaq)} dB，其中含风噪抬升，折算后仍在 55 dB 夜间限值之上。</li>
     <li>操场早间 ${fmt((rows.find(r => r.loc === "操场" && r.period === "早") || {}).leaq)} dB、峰值 ${fmt((rows.find(r => r.loc === "操场" && r.period === "早") || {}).peak)} dB，呈现典型跑操 + 广播瞬态冲击；午间回落至 ${fmt((rows.find(r => r.loc === "操场" && r.period === "中") || {}).leaq)} dB 说明其噪声与作息强相关。</li>
   </ul>`;
@@ -811,6 +833,8 @@ legend($("#legend1"), ser1, "leaq"); legend($("#legend2"), ser2, "peak");
     `食堂加装吸声吊顶与软质座椅（NRC ≥ 0.6），并在取餐口设置"轻声提示"灯柱，午间目标压到 70 dB 以下。`,
     `实训室走廊按课间人流做分流与错峰，走廊两端设吸声板，避免混响叠加。`,
     `图书馆自习区设置分区提示：入口灯柱常绿，入馆后声级升高即转黄，形成"无声提醒"。`,
+    `闭馆音乐纳入扩声管理：音量按背景音乐控制在 55 dB(A) 以内，或改为闭馆前 15 min 短时播放，避免长时间满功率覆盖；`,
+    `图书馆夜间本底另行复测：在闭馆音乐结束后 5–10 min 取样，才能得到真实的自习区夜间背景声级。`,
     `操场广播与跑操集中时段管理，边界处设隔声绿篱；早间 07:00 前避免高音广播。`,
     `主干道临校一侧加装 3 m 高隔声屏并配合绿化带，重点压 500 Hz 以下轮胎/路面噪声；早高峰设潮汐车道限速 30 km/h。`,
     `后续复测统一加装防风罩（foam windscreen），风速 >3 m/s 时暂停记录，避免风噪污染夜间本底数据。`,
@@ -825,14 +849,9 @@ legend($("#legend1"), ser1, "leaq"); legend($("#legend2"), ser2, "peak");
   if (qcRows.length) {
     html += `<br><b>数据质量说明：</b>` + qcRows.map(r => {
       const q = qcOf(r.no);
-      return `第 ${r.no} 组（${r.loc} ${r.period_label}）— <b>${q.tag}</b>。${q.note}`;
-    }).join("<br>");
-    html += `<br><span style="color:var(--mute)">影响量级判断：主干道夜间实测 ${fmt((rows.find(r=>r.no==="G09")||{}).leaq)} dB，`
-      + `仅比昼间均值 ${fmt((((rows.find(r=>r.no==="G07")||{}).leaq + (rows.find(r=>r.no==="G08")||{}).leaq) / 2))} dB 低 `
-      + `${fmt((((rows.find(r=>r.no==="G07")||{}).leaq + (rows.find(r=>r.no==="G08")||{}).leaq) / 2) - ((rows.find(r=>r.no==="G09")||{}).leaq))} dB；`
-      + `交通干线夜间车流量大幅下降，正常应有 8–12 dB 的回落。缺口即风噪抬升量，据此可推断该点位真实夜间 Leq 约在 `
-      + `${Math.round(((rows.find(r=>r.no==="G09")||{}).leaq || 0) - 10)}–${Math.round(((rows.find(r=>r.no==="G09")||{}).leaq || 0) - 6)} dB(A) 区间，`
-      + `仍高于 4a 类区夜间 55 dB 限值，结论方向不变，但「+12.1 dB」不应直接引用。</span>`;
+      const d = q.detail ? `<br><span style="color:var(--mute)">${q.detail(r)}</span>` : "";
+      return `<br>· 第 ${r.no} 组（${r.loc} ${r.period_label}）— <b>${q.tag}</b>。${q.note}${d}`;
+    }).join("");
   }
   $("#pendingNote").innerHTML = html;
   $("#pendingNote").classList.toggle("warn", true);

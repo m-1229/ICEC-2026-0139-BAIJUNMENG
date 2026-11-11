@@ -187,18 +187,25 @@ def analyze():
     # 统一编号 G01–G15
     for i, r in enumerate(rows, 1):
         r["no"] = f"G{i:02d}"
+    # 现场干扰备注（测量人员现场观察，非仪器字段）
+    QC_NOTE = {
+        "G03": "含闭馆音乐：测量时馆内扩声系统持续播放，读数为音乐与背景的叠加值，不代表夜间本底",
+        "G09": "含风噪：测量期间有风且点位开阔无遮挡，读数偏高约 6-10 dB，宜作上限参考",
+    }
+    for r in rows:
+        r["note"] = QC_NOTE.get(r["no"], "")
     return rows
 
 
 def to_csv(rows):
     cols = ["no", "loc", "period", "date", "duration_s", "samples", "interval_ms",
             "leaq", "peak", "lmax", "lmin", "l10", "l50", "l90", "sd",
-            "limit", "exceed_db", "exceed_peak", "over", "ratio", "zone", "ref", "file"]
+            "limit", "exceed_db", "exceed_peak", "over", "ratio", "zone", "ref", "file", "note"]
     header = ["组号", "点位", "时段", "采样日期", "时长(s)", "样本数", "采样间隔(ms)",
               "Leq 均值 dB(A)", "Peak 峰值 dB(A)", "Lmax dB(A)", "Lmin dB(A)",
               "L10 dB(A)", "L50 dB(A)", "L90 dB(A)", "标准差 dB",
               "限值 dB(A)", "均值超标 dB", "峰值超标 dB", "是否超标", "比值",
-              "功能区划", "限值依据", "源文件"]
+              "功能区划", "限值依据", "源文件", "备注"]
     out = os.path.join(DATA, "acoustic_15groups.csv")
     with open(out, "w", encoding="utf-8-sig", newline="") as f:
         f.write(",".join(header) + "\n")

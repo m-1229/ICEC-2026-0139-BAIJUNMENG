@@ -85,7 +85,8 @@
       "exceed_peak": 3.4,
       "over": false,
       "ratio": 0.824,
-      "no": "G01"
+      "no": "G01",
+      "note": ""
     },
     {
       "id": "",
@@ -113,7 +114,8 @@
       "exceed_peak": 18.5,
       "over": true,
       "ratio": 1.064,
-      "no": "G02"
+      "no": "G02",
+      "note": ""
     },
     {
       "id": "",
@@ -141,7 +143,8 @@
       "exceed_peak": 20.4,
       "over": true,
       "ratio": 1.349,
-      "no": "G03"
+      "no": "G03",
+      "note": "含闭馆音乐：测量时馆内扩声系统持续播放，读数为音乐与背景的叠加值，不代表夜间本底"
     },
     {
       "id": "",
@@ -169,7 +172,8 @@
       "exceed_peak": 27.1,
       "over": true,
       "ratio": 1.198,
-      "no": "G04"
+      "no": "G04",
+      "note": ""
     },
     {
       "id": "",
@@ -197,7 +201,8 @@
       "exceed_peak": 42.7,
       "over": true,
       "ratio": 1.302,
-      "no": "G05"
+      "no": "G05",
+      "note": ""
     },
     {
       "id": "",
@@ -225,7 +230,8 @@
       "exceed_peak": 36.5,
       "over": true,
       "ratio": 1.454,
-      "no": "G06"
+      "no": "G06",
+      "note": ""
     },
     {
       "id": "",
@@ -253,7 +259,8 @@
       "exceed_peak": 15.8,
       "over": false,
       "ratio": 1.0,
-      "no": "G07"
+      "no": "G07",
+      "note": ""
     },
     {
       "id": "",
@@ -281,7 +288,8 @@
       "exceed_peak": 11.6,
       "over": false,
       "ratio": 0.993,
-      "no": "G08"
+      "no": "G08",
+      "note": ""
     },
     {
       "id": "",
@@ -309,7 +317,8 @@
       "exceed_peak": 30.0,
       "over": true,
       "ratio": 1.22,
-      "no": "G09"
+      "no": "G09",
+      "note": "含风噪：测量期间有风且点位开阔无遮挡，读数偏高约 6-10 dB，宜作上限参考"
     },
     {
       "id": "",
@@ -337,7 +346,8 @@
       "exceed_peak": 34.3,
       "over": true,
       "ratio": 1.345,
-      "no": "G10"
+      "no": "G10",
+      "note": ""
     },
     {
       "id": "",
@@ -365,7 +375,8 @@
       "exceed_peak": 8.4,
       "over": false,
       "ratio": 1.0,
-      "no": "G11"
+      "no": "G11",
+      "note": ""
     },
     {
       "id": "",
@@ -393,7 +404,8 @@
       "exceed_peak": 19.8,
       "over": true,
       "ratio": 1.231,
-      "no": "G12"
+      "no": "G12",
+      "note": ""
     },
     {
       "id": "",
@@ -421,7 +433,8 @@
       "exceed_peak": 20.9,
       "over": true,
       "ratio": 1.106,
-      "no": "G13"
+      "no": "G13",
+      "note": ""
     },
     {
       "id": "",
@@ -449,7 +462,8 @@
       "exceed_peak": 20.8,
       "over": true,
       "ratio": 1.149,
-      "no": "G14"
+      "no": "G14",
+      "note": ""
     },
     {
       "id": "",
@@ -477,7 +491,8 @@
       "exceed_peak": 11.4,
       "over": false,
       "ratio": 0.996,
-      "no": "G15"
+      "no": "G15",
+      "note": ""
     }
   ]
 }
