@@ -1,0 +1,143 @@
+{
+  "note": "scores are per-class model outputs, not calibrated probabilities and not accuracy",
+  "results": [
+    {
+      "file": "recordings\\敲门\\敲门.wav",
+      "source_format": "48000 Hz, 2 ch, 16-bit PCM",
+      "source_sample_rate": 48000,
+      "source_channels": 2,
+      "source_bits": 16,
+      "stats": {
+        "duration_s": 14.28,
+        "peak": 0.5194,
+        "peak_dbfs": -5.7,
+        "rms": 0.0411,
+        "dc_offset": -0.0,
+        "clipped_samples": 0,
+        "samples": 228480
+      },
+      "notes": [
+        [
+          "info",
+          "downmixed 2 ch -> 1 ch (channel mean)"
+        ],
+        [
+          "info",
+          "resampled 48000 Hz -> 16000 Hz"
+        ]
+      ],
+      "frames": 29,
+      "shapes": {
+        "scores": [
+          29,
+          521
+        ],
+        "embeddings": [
+          29,
+          1024
+        ],
+        "log_mel": [
+          1440,
+          64
+        ]
+      },
+      "inference_ms": 181.8,
+      "top": [
+        {
+          "rank": 1,
+          "class": "Speech",
+          "score": 0.1551
+        },
+        {
+          "rank": 2,
+          "class": "Inside, small room",
+          "score": 0.1384
+        },
+        {
+          "rank": 3,
+          "class": "Animal",
+          "score": 0.1261
+        },
+        {
+          "rank": 4,
+          "class": "Duck",
+          "score": 0.1142
+        },
+        {
+          "rank": 5,
+          "class": "Quack",
+          "score": 0.1127
+        }
+      ]
+    },
+    {
+      "file": "recordings\\门铃\\门铃.wav",
+      "source_format": "48000 Hz, 2 ch, 16-bit PCM",
+      "source_sample_rate": 48000,
+      "source_channels": 2,
+      "source_bits": 16,
+      "stats": {
+        "duration_s": 8.256,
+        "peak": 0.3072,
+        "peak_dbfs": -10.3,
+        "rms": 0.0436,
+        "dc_offset": -0.0,
+        "clipped_samples": 0,
+        "samples": 132096
+      },
+      "notes": [
+        [
+          "info",
+          "downmixed 2 ch -> 1 ch (channel mean)"
+        ],
+        [
+          "info",
+          "resampled 48000 Hz -> 16000 Hz"
+        ]
+      ],
+      "frames": 17,
+      "shapes": {
+        "scores": [
+          17,
+          521
+        ],
+        "embeddings": [
+          17,
+          1024
+        ],
+        "log_mel": [
+          864,
+          64
+        ]
+      },
+      "inference_ms": 19.4,
+      "top": [
+        {
+          "rank": 1,
+          "class": "Chime",
+          "score": 0.4583
+        },
+        {
+          "rank": 2,
+          "class": "Wind chime",
+          "score": 0.4125
+        },
+        {
+          "rank": 3,
+          "class": "Bell",
+          "score": 0.4083
+        },
+        {
+          "rank": 4,
+          "class": "Telephone",
+          "score": 0.0897
+        },
+        {
+          "rank": 5,
+          "class": "Turkey",
+          "score": 0.0789
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+file,duration_s,source_format,rank,class,score,frames,inference_ms
+recordings\敲门\敲门.wav,14.28,"48000 Hz, 2 ch, 16-bit PCM",1,Speech,0.1551,29,181.8
+recordings\敲门\敲门.wav,14.28,"48000 Hz, 2 ch, 16-bit PCM",2,"Inside, small room",0.1384,29,181.8
+recordings\敲门\敲门.wav,14.28,"48000 Hz, 2 ch, 16-bit PCM",3,Animal,0.1261,29,181.8
+recordings\敲门\敲门.wav,14.28,"48000 Hz, 2 ch, 16-bit PCM",4,Duck,0.1142,29,181.8
+recordings\敲门\敲门.wav,14.28,"48000 Hz, 2 ch, 16-bit PCM",5,Quack,0.1127,29,181.8
+recordings\门铃\门铃.wav,8.256,"48000 Hz, 2 ch, 16-bit PCM",1,Chime,0.4583,17,19.4
+recordings\门铃\门铃.wav,8.256,"48000 Hz, 2 ch, 16-bit PCM",2,Wind chime,0.4125,17,19.4
+recordings\门铃\门铃.wav,8.256,"48000 Hz, 2 ch, 16-bit PCM",3,Bell,0.4083,17,19.4
+recordings\门铃\门铃.wav,8.256,"48000 Hz, 2 ch, 16-bit PCM",4,Telephone,0.0897,17,19.4
+recordings\门铃\门铃.wav,8.256,"48000 Hz, 2 ch, 16-bit PCM",5,Turkey,0.0789,17,19.4

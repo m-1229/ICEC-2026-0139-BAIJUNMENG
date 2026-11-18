@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#176b58">
+    <title>SmartLife 智能生活提醒</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="/static/js/app.js?v=0.4.0" defer></script>
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <p class="eyebrow">SMARTLIFE · 智能生活辅助</p>
+        <h1>让重要声音，变成清晰提醒</h1>
+        <p class="intro">连接麦克风后，页面会持续关注敲门这类重要声音，并把识别结果转成看得见的提醒。</p>
+      </header>
+
+      <section
+        id="knock-alert"
+        class="alert-banner"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        hidden
+      >
+        <p class="alert-title">检测到可能的敲门声</p>
+        <p id="knock-alert-time" class="alert-time"></p>
+        <button id="knock-alert-dismiss" class="alert-dismiss" type="button">我知道了</button>
+      </section>
+
+      <section class="card" aria-labelledby="connection-title">
+        <h2 id="connection-title">服务连接</h2>
+        <p id="connection-status" class="status" role="status" aria-live="polite">
+          正在连接后端…
+        </p>
+        <button id="refresh-button" type="button">重新检查</button>
+      </section>
+
+      <section class="card" aria-labelledby="listen-title">
+        <div class="section-heading">
+          <h2 id="listen-title">麦克风监听</h2>
+          <span id="listen-state" class="state-badge" data-state="idle">未监听</span>
+        </div>
+        <p>选择麦克风后开始监听。录音只在内存中处理，不保存、不上传，只把识别结果转成提醒。</p>
+
+        <div class="listen-form">
+          <label for="listen-device">麦克风设备</label>
+          <select id="listen-device" disabled>
+            <option value="">正在读取设备…</option>
+          </select>
+          <p class="hint">设备列表由后端实时枚举，编号会随系统变化，页面不硬编码设备索引。</p>
+          <div class="listen-actions">
+            <button id="listen-start-button" type="button" disabled>开始监听</button>
+            <button id="listen-stop-button" type="button" class="button-secondary" disabled>
+              停止监听
+            </button>
+            <button id="refresh-devices-button" type="button" class="button-secondary">
+              重新读取设备
+            </button>
+          </div>
+        </div>
+
+        <p id="listen-meta" class="status"></p>
+        <p id="listen-persist-status" class="status" data-state="loading">
+          正在读取落库状态…
+        </p>
+        <p id="listen-status" class="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="test-alert-card" class="card" aria-labelledby="test-alert-title" hidden>
+        <h2 id="test-alert-title">手动提醒测试</h2>
+        <p>点击按钮向后端发送测试请求。此功能不会监听声音、执行识别或保存事件。</p>
+        <button id="test-alert-button" type="button">发送测试提醒</button>
+        <p id="test-alert-status" class="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="card" aria-labelledby="simulate-title">
+        <h2 id="simulate-title">模拟声音事件</h2>
+        <p>用于测试记录流程。模拟事件会明确标记为“模拟”，不会被当作真实识别结果。</p>
+        <form id="simulate-event-form">
+          <label for="event-type">事件类型</label>
+          <select id="event-type" name="event_type" required>
+            <option value="doorbell">门铃</option>
+            <option value="knock">敲门</option>
+            <option value="kettle">水壶</option>
+            <option value="alarm">警报</option>
+          </select>
+          <label for="event-confidence">模拟置信度（0 到 1）</label>
+          <input
+            id="event-confidence"
+            name="confidence"
+            type="number"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0.9"
+            required
+          >
+          <button id="simulate-event-button" type="submit">创建模拟事件</button>
+        </form>
+        <p id="simulate-event-status" class="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="card" aria-labelledby="settings-title">
+        <h2 id="settings-title">提醒设置</h2>
+        <p>设置保存在本机 SQLite 数据库中，重新加载页面后仍会保留。</p>
+        <div id="settings-list" class="setting-list" aria-live="polite"></div>
+        <p id="knock-alert-hint" class="hint"></p>
+        <p id="settings-status" class="status" role="status" aria-live="polite">
+          正在读取提醒设置…
+        </p>
+      </section>
+
+      <section class="card" aria-labelledby="events-title">
+        <div class="section-heading">
+          <h2 id="events-title">历史事件</h2>
+          <button id="refresh-events-button" type="button">刷新记录</button>
+        </div>
+        <p id="events-status" class="status" role="status" aria-live="polite">
+          正在读取历史记录…
+        </p>
+        <ul id="event-list" class="event-list" aria-label="声音事件历史记录"></ul>
+      </section>
+
+      <section class="card note">
+        <h2>开发阶段说明</h2>
+        <p>
+          当前只处理敲门这一种声音：真实麦克风会话中确认的敲门簇可以写入事件历史，门铃与水壶尚未接入。
+          页面不保存录音，也不提供震动提醒。历史上已有的事件在刷新后不会再次弹出提醒。
+        </p>
+      </section>
+      <footer>SmartLife · 基础功能验证</footer>
+    </main>
+  </body>
+</html>

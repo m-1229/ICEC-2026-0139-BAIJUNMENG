@@ -1,0 +1,264 @@
+{
+  "note": "scores are per-class model outputs, not calibrated probabilities and not accuracy",
+  "results": [
+    {
+      "file": "samples\\selftest_44k1_float.wav",
+      "source_format": "44100 Hz, 1 ch, 32-bit float",
+      "source_sample_rate": 44100,
+      "source_channels": 1,
+      "source_bits": 32,
+      "stats": {
+        "duration_s": 1.5,
+        "peak": 0.5,
+        "peak_dbfs": -6.0,
+        "rms": 0.3504,
+        "dc_offset": 0.0,
+        "clipped_samples": 0,
+        "samples": 24000
+      },
+      "notes": [
+        [
+          "info",
+          "resampled 44100 Hz -> 16000 Hz"
+        ]
+      ],
+      "frames": 3,
+      "shapes": {
+        "scores": [
+          3,
+          521
+        ],
+        "embeddings": [
+          3,
+          1024
+        ],
+        "log_mel": [
+          192,
+          64
+        ]
+      },
+      "inference_ms": 165.2,
+      "top": [
+        {
+          "rank": 1,
+          "class": "Telephone",
+          "score": 0.9955
+        },
+        {
+          "rank": 2,
+          "class": "Busy signal",
+          "score": 0.9751
+        },
+        {
+          "rank": 3,
+          "class": "Alarm",
+          "score": 0.9648
+        },
+        {
+          "rank": 4,
+          "class": "Dial tone",
+          "score": 0.9516
+        },
+        {
+          "rank": 5,
+          "class": "Sidetone",
+          "score": 0.0302
+        }
+      ]
+    },
+    {
+      "file": "samples\\selftest_48k_stereo.wav",
+      "source_format": "48000 Hz, 2 ch, 16-bit PCM",
+      "source_sample_rate": 48000,
+      "source_channels": 2,
+      "source_bits": 16,
+      "stats": {
+        "duration_s": 2.5,
+        "peak": 0.4042,
+        "peak_dbfs": -7.9,
+        "rms": 0.2146,
+        "dc_offset": -0.0,
+        "clipped_samples": 0,
+        "samples": 40000
+      },
+      "notes": [
+        [
+          "info",
+          "downmixed 2 ch -> 1 ch (channel mean)"
+        ],
+        [
+          "info",
+          "resampled 48000 Hz -> 16000 Hz"
+        ]
+      ],
+      "frames": 5,
+      "shapes": {
+        "scores": [
+          5,
+          521
+        ],
+        "embeddings": [
+          5,
+          1024
+        ],
+        "log_mel": [
+          288,
+          64
+        ]
+      },
+      "inference_ms": 15.7,
+      "top": [
+        {
+          "rank": 1,
+          "class": "Sine wave",
+          "score": 0.8031
+        },
+        {
+          "rank": 2,
+          "class": "Beep, bleep",
+          "score": 0.1501
+        },
+        {
+          "rank": 3,
+          "class": "Sidetone",
+          "score": 0.1315
+        },
+        {
+          "rank": 4,
+          "class": "Dial tone",
+          "score": 0.0963
+        },
+        {
+          "rank": 5,
+          "class": "Busy signal",
+          "score": 0.0852
+        }
+      ]
+    },
+    {
+      "file": "samples\\selftest_8k_mono.wav",
+      "source_format": "8000 Hz, 1 ch, 16-bit PCM",
+      "source_sample_rate": 8000,
+      "source_channels": 1,
+      "source_bits": 16,
+      "stats": {
+        "duration_s": 1.2,
+        "peak": 0.5,
+        "peak_dbfs": -6.0,
+        "rms": 0.3496,
+        "dc_offset": 0.0,
+        "clipped_samples": 0,
+        "samples": 19200
+      },
+      "notes": [
+        [
+          "info",
+          "resampled 8000 Hz -> 16000 Hz"
+        ]
+      ],
+      "frames": 2,
+      "shapes": {
+        "scores": [
+          2,
+          521
+        ],
+        "embeddings": [
+          2,
+          1024
+        ],
+        "log_mel": [
+          144,
+          64
+        ]
+      },
+      "inference_ms": 13.6,
+      "top": [
+        {
+          "rank": 1,
+          "class": "Sine wave",
+          "score": 0.6203
+        },
+        {
+          "rank": 2,
+          "class": "Busy signal",
+          "score": 0.4494
+        },
+        {
+          "rank": 3,
+          "class": "Telephone",
+          "score": 0.2275
+        },
+        {
+          "rank": 4,
+          "class": "Alarm",
+          "score": 0.1269
+        },
+        {
+          "rank": 5,
+          "class": "Synthesizer",
+          "score": 0.0309
+        }
+      ]
+    },
+    {
+      "file": "samples\\test_audio_16k.wav",
+      "source_format": "16000 Hz, 1 ch, 16-bit PCM",
+      "source_sample_rate": 16000,
+      "source_channels": 1,
+      "source_bits": 16,
+      "stats": {
+        "duration_s": 3.0,
+        "peak": 0.6,
+        "peak_dbfs": -4.4,
+        "rms": 0.3461,
+        "dc_offset": -0.0,
+        "clipped_samples": 0,
+        "samples": 48000
+      },
+      "notes": [],
+      "frames": 6,
+      "shapes": {
+        "scores": [
+          6,
+          521
+        ],
+        "embeddings": [
+          6,
+          1024
+        ],
+        "log_mel": [
+          336,
+          64
+        ]
+      },
+      "inference_ms": 15.9,
+      "top": [
+        {
+          "rank": 1,
+          "class": "Beep, bleep",
+          "score": 0.801
+        },
+        {
+          "rank": 2,
+          "class": "Noise",
+          "score": 0.1403
+        },
+        {
+          "rank": 3,
+          "class": "Sound effect",
+          "score": 0.1054
+        },
+        {
+          "rank": 4,
+          "class": "Synthesizer",
+          "score": 0.0871
+        },
+        {
+          "rank": 5,
+          "class": "Keyboard (musical)",
+          "score": 0.0616
+        }
+      ]
+    }
+  ]
+}

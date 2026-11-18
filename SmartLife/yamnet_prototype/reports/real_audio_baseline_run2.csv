@@ -1,0 +1,61 @@
+file,duration_s,source_format,rank,class,score,frames,inference_ms
+recordings\婴儿哭声\baby_crying.wav,131.081,"44100 Hz, 1 ch, 16-bit PCM",1,"Crying, sobbing",0.9217,273,260.9
+recordings\婴儿哭声\baby_crying.wav,131.081,"44100 Hz, 1 ch, 16-bit PCM",2,"Baby cry, infant cry",0.8565,273,260.9
+recordings\婴儿哭声\baby_crying.wav,131.081,"44100 Hz, 1 ch, 16-bit PCM",3,Whimper,0.0934,273,260.9
+recordings\婴儿哭声\baby_crying.wav,131.081,"44100 Hz, 1 ch, 16-bit PCM",4,Babbling,0.032,273,260.9
+recordings\婴儿哭声\baby_crying.wav,131.081,"44100 Hz, 1 ch, 16-bit PCM",5,"Inside, small room",0.0239,273,260.9
+recordings\敲门\knock_heavy.wav,1.543,"44100 Hz, 2 ch, 16-bit PCM",1,Knock,0.9678,3,16.0
+recordings\敲门\knock_heavy.wav,1.543,"44100 Hz, 2 ch, 16-bit PCM",2,Door,0.7448,3,16.0
+recordings\敲门\knock_heavy.wav,1.543,"44100 Hz, 2 ch, 16-bit PCM",3,Tap,0.2566,3,16.0
+recordings\敲门\knock_heavy.wav,1.543,"44100 Hz, 2 ch, 16-bit PCM",4,Thunk,0.2365,3,16.0
+recordings\敲门\knock_heavy.wav,1.543,"44100 Hz, 2 ch, 16-bit PCM",5,"Whack, thwack",0.171,3,16.0
+recordings\敲门\knock_light.wav,4.123,"44100 Hz, 1 ch, 16-bit PCM",1,Knock,0.7732,8,19.2
+recordings\敲门\knock_light.wav,4.123,"44100 Hz, 1 ch, 16-bit PCM",2,Door,0.5348,8,19.2
+recordings\敲门\knock_light.wav,4.123,"44100 Hz, 1 ch, 16-bit PCM",3,Tap,0.1382,8,19.2
+recordings\敲门\knock_light.wav,4.123,"44100 Hz, 1 ch, 16-bit PCM",4,Silence,0.0771,8,19.2
+recordings\敲门\knock_light.wav,4.123,"44100 Hz, 1 ch, 16-bit PCM",5,"Thump, thud",0.0587,8,19.2
+recordings\敲门\knock_medium.wav,6.729,"48000 Hz, 1 ch, 16-bit PCM",1,Hammer,0.3844,13,19.6
+recordings\敲门\knock_medium.wav,6.729,"48000 Hz, 1 ch, 16-bit PCM",2,Glass,0.2676,13,19.6
+recordings\敲门\knock_medium.wav,6.729,"48000 Hz, 1 ch, 16-bit PCM",3,Tools,0.244,13,19.6
+recordings\敲门\knock_medium.wav,6.729,"48000 Hz, 1 ch, 16-bit PCM",4,Silence,0.2314,13,19.6
+recordings\敲门\knock_medium.wav,6.729,"48000 Hz, 1 ch, 16-bit PCM",5,"Chink, clink",0.2013,13,19.6
+recordings\敲门\敲门.wav,14.28,"48000 Hz, 2 ch, 16-bit PCM",1,Speech,0.1551,29,21.4
+recordings\敲门\敲门.wav,14.28,"48000 Hz, 2 ch, 16-bit PCM",2,"Inside, small room",0.1384,29,21.4
+recordings\敲门\敲门.wav,14.28,"48000 Hz, 2 ch, 16-bit PCM",3,Animal,0.1261,29,21.4
+recordings\敲门\敲门.wav,14.28,"48000 Hz, 2 ch, 16-bit PCM",4,Duck,0.1142,29,21.4
+recordings\敲门\敲门.wav,14.28,"48000 Hz, 2 ch, 16-bit PCM",5,Quack,0.1127,29,21.4
+recordings\水壶\kettle_whistle.wav,68.096,"48000 Hz, 1 ch, 16-bit PCM",1,Alarm,0.1732,141,58.1
+recordings\水壶\kettle_whistle.wav,68.096,"48000 Hz, 1 ch, 16-bit PCM",2,Fire alarm,0.1196,141,58.1
+recordings\水壶\kettle_whistle.wav,68.096,"48000 Hz, 1 ch, 16-bit PCM",3,Music,0.0693,141,58.1
+recordings\水壶\kettle_whistle.wav,68.096,"48000 Hz, 1 ch, 16-bit PCM",4,Vehicle,0.0619,141,58.1
+recordings\水壶\kettle_whistle.wav,68.096,"48000 Hz, 1 ch, 16-bit PCM",5,Whistle,0.0512,141,58.1
+recordings\烟雾报警\smoke_alarm_long.wav,43.264,"48000 Hz, 1 ch, 16-bit PCM",1,"Smoke detector, smoke alarm",0.8645,90,42.0
+recordings\烟雾报警\smoke_alarm_long.wav,43.264,"48000 Hz, 1 ch, 16-bit PCM",2,Alarm,0.7872,90,42.0
+recordings\烟雾报警\smoke_alarm_long.wav,43.264,"48000 Hz, 1 ch, 16-bit PCM",3,Buzzer,0.2848,90,42.0
+recordings\烟雾报警\smoke_alarm_long.wav,43.264,"48000 Hz, 1 ch, 16-bit PCM",4,"Beep, bleep",0.1587,90,42.0
+recordings\烟雾报警\smoke_alarm_long.wav,43.264,"48000 Hz, 1 ch, 16-bit PCM",5,Fire alarm,0.0511,90,42.0
+recordings\烟雾报警\smoke_alarm_standard.wav,39.253,"48000 Hz, 1 ch, 16-bit PCM",1,"Beep, bleep",0.8553,81,40.9
+recordings\烟雾报警\smoke_alarm_standard.wav,39.253,"48000 Hz, 1 ch, 16-bit PCM",2,Alarm,0.6957,81,40.9
+recordings\烟雾报警\smoke_alarm_standard.wav,39.253,"48000 Hz, 1 ch, 16-bit PCM",3,Telephone,0.5285,81,40.9
+recordings\烟雾报警\smoke_alarm_standard.wav,39.253,"48000 Hz, 1 ch, 16-bit PCM",4,Ringtone,0.4843,81,40.9
+recordings\烟雾报警\smoke_alarm_standard.wav,39.253,"48000 Hz, 1 ch, 16-bit PCM",5,"Smoke detector, smoke alarm",0.3693,81,40.9
+recordings\门铃\doorbell_classic(1).wav,5.786,"48000 Hz, 1 ch, 16-bit PCM",1,Silence,0.1739,12,16.4
+recordings\门铃\doorbell_classic(1).wav,5.786,"48000 Hz, 1 ch, 16-bit PCM",2,Doorbell,0.1611,12,16.4
+recordings\门铃\doorbell_classic(1).wav,5.786,"48000 Hz, 1 ch, 16-bit PCM",3,Music,0.1525,12,16.4
+recordings\门铃\doorbell_classic(1).wav,5.786,"48000 Hz, 1 ch, 16-bit PCM",4,Mallet percussion,0.1138,12,16.4
+recordings\门铃\doorbell_classic(1).wav,5.786,"48000 Hz, 1 ch, 16-bit PCM",5,Percussion,0.1078,12,16.4
+recordings\门铃\doorbell_large.wav,12.203,"48000 Hz, 1 ch, 16-bit PCM",1,Music,0.2217,25,20.5
+recordings\门铃\doorbell_large.wav,12.203,"48000 Hz, 1 ch, 16-bit PCM",2,Singing bowl,0.2183,25,20.5
+recordings\门铃\doorbell_large.wav,12.203,"48000 Hz, 1 ch, 16-bit PCM",3,Bell,0.214,25,20.5
+recordings\门铃\doorbell_large.wav,12.203,"48000 Hz, 1 ch, 16-bit PCM",4,Silence,0.1697,25,20.5
+recordings\门铃\doorbell_large.wav,12.203,"48000 Hz, 1 ch, 16-bit PCM",5,Church bell,0.1123,25,20.5
+recordings\门铃\doorbell_mechanical.wav,4.096,"48000 Hz, 1 ch, 16-bit PCM",1,Silence,0.3543,8,12.7
+recordings\门铃\doorbell_mechanical.wav,4.096,"48000 Hz, 1 ch, 16-bit PCM",2,Alarm,0.2574,8,12.7
+recordings\门铃\doorbell_mechanical.wav,4.096,"48000 Hz, 1 ch, 16-bit PCM",3,Telephone,0.1935,8,12.7
+recordings\门铃\doorbell_mechanical.wav,4.096,"48000 Hz, 1 ch, 16-bit PCM",4,Telephone bell ringing,0.1866,8,12.7
+recordings\门铃\doorbell_mechanical.wav,4.096,"48000 Hz, 1 ch, 16-bit PCM",5,Buzzer,0.1534,8,12.7
+recordings\门铃\门铃.wav,8.256,"48000 Hz, 2 ch, 16-bit PCM",1,Chime,0.4583,17,19.6
+recordings\门铃\门铃.wav,8.256,"48000 Hz, 2 ch, 16-bit PCM",2,Wind chime,0.4125,17,19.6
+recordings\门铃\门铃.wav,8.256,"48000 Hz, 2 ch, 16-bit PCM",3,Bell,0.4083,17,19.6
+recordings\门铃\门铃.wav,8.256,"48000 Hz, 2 ch, 16-bit PCM",4,Telephone,0.0897,17,19.6
+recordings\门铃\门铃.wav,8.256,"48000 Hz, 2 ch, 16-bit PCM",5,Turkey,0.0789,17,19.6

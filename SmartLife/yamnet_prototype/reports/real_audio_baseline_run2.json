@@ -1,0 +1,797 @@
+{
+  "note": "scores are per-class model outputs, not calibrated probabilities and not accuracy",
+  "results": [
+    {
+      "file": "recordings\\婴儿哭声\\baby_crying.wav",
+      "source_format": "44100 Hz, 1 ch, 16-bit PCM",
+      "source_sample_rate": 44100,
+      "source_channels": 1,
+      "source_bits": 16,
+      "stats": {
+        "duration_s": 131.081,
+        "peak": 0.5896,
+        "peak_dbfs": -4.6,
+        "rms": 0.0403,
+        "dc_offset": 0.0021,
+        "clipped_samples": 0,
+        "samples": 2097296
+      },
+      "notes": [
+        [
+          "info",
+          "resampled 44100 Hz -> 16000 Hz"
+        ]
+      ],
+      "frames": 273,
+      "shapes": {
+        "scores": [
+          273,
+          521
+        ],
+        "embeddings": [
+          273,
+          1024
+        ],
+        "log_mel": [
+          13152,
+          64
+        ]
+      },
+      "inference_ms": 260.9,
+      "top": [
+        {
+          "rank": 1,
+          "class": "Crying, sobbing",
+          "score": 0.9217
+        },
+        {
+          "rank": 2,
+          "class": "Baby cry, infant cry",
+          "score": 0.8565
+        },
+        {
+          "rank": 3,
+          "class": "Whimper",
+          "score": 0.0934
+        },
+        {
+          "rank": 4,
+          "class": "Babbling",
+          "score": 0.032
+        },
+        {
+          "rank": 5,
+          "class": "Inside, small room",
+          "score": 0.0239
+        }
+      ]
+    },
+    {
+      "file": "recordings\\敲门\\knock_heavy.wav",
+      "source_format": "44100 Hz, 2 ch, 16-bit PCM",
+      "source_sample_rate": 44100,
+      "source_channels": 2,
+      "source_bits": 16,
+      "stats": {
+        "duration_s": 1.543,
+        "peak": 0.2547,
+        "peak_dbfs": -11.9,
+        "rms": 0.0227,
+        "dc_offset": -0.0002,
+        "clipped_samples": 0,
+        "samples": 24691
+      },
+      "notes": [
+        [
+          "info",
+          "downmixed 2 ch -> 1 ch (channel mean)"
+        ],
+        [
+          "info",
+          "resampled 44100 Hz -> 16000 Hz"
+        ]
+      ],
+      "frames": 3,
+      "shapes": {
+        "scores": [
+          3,
+          521
+        ],
+        "embeddings": [
+          3,
+          1024
+        ],
+        "log_mel": [
+          192,
+          64
+        ]
+      },
+      "inference_ms": 16.0,
+      "top": [
+        {
+          "rank": 1,
+          "class": "Knock",
+          "score": 0.9678
+        },
+        {
+          "rank": 2,
+          "class": "Door",
+          "score": 0.7448
+        },
+        {
+          "rank": 3,
+          "class": "Tap",
+          "score": 0.2566
+        },
+        {
+          "rank": 4,
+          "class": "Thunk",
+          "score": 0.2365
+        },
+        {
+          "rank": 5,
+          "class": "Whack, thwack",
+          "score": 0.171
+        }
+      ]
+    },
+    {
+      "file": "recordings\\敲门\\knock_light.wav",
+      "source_format": "44100 Hz, 1 ch, 16-bit PCM",
+      "source_sample_rate": 44100,
+      "source_channels": 1,
+      "source_bits": 16,
+      "stats": {
+        "duration_s": 4.123,
+        "peak": 0.6961,
+        "peak_dbfs": -3.1,
+        "rms": 0.0222,
+        "dc_offset": 0.0002,
+        "clipped_samples": 0,
+        "samples": 65976
+      },
+      "notes": [
+        [
+          "info",
+          "resampled 44100 Hz -> 16000 Hz"
+        ]
+      ],
+      "frames": 8,
+      "shapes": {
+        "scores": [
+          8,
+          521
+        ],
+        "embeddings": [
+          8,
+          1024
+        ],
+        "log_mel": [
+          432,
+          64
+        ]
+      },
+      "inference_ms": 19.2,
+      "top": [
+        {
+          "rank": 1,
+          "class": "Knock",
+          "score": 0.7732
+        },
+        {
+          "rank": 2,
+          "class": "Door",
+          "score": 0.5348
+        },
+        {
+          "rank": 3,
+          "class": "Tap",
+          "score": 0.1382
+        },
+        {
+          "rank": 4,
+          "class": "Silence",
+          "score": 0.0771
+        },
+        {
+          "rank": 5,
+          "class": "Thump, thud",
+          "score": 0.0587
+        }
+      ]
+    },
+    {
+      "file": "recordings\\敲门\\knock_medium.wav",
+      "source_format": "48000 Hz, 1 ch, 16-bit PCM",
+      "source_sample_rate": 48000,
+      "source_channels": 1,
+      "source_bits": 16,
+      "stats": {
+        "duration_s": 6.729,
+        "peak": 0.9932,
+        "peak_dbfs": -0.1,
+        "rms": 0.0385,
+        "dc_offset": -0.0,
+        "clipped_samples": 0,
+        "samples": 107658
+      },
+      "notes": [
+        [
+          "info",
+          "resampled 48000 Hz -> 16000 Hz"
+        ]
+      ],
+      "frames": 13,
+      "shapes": {
+        "scores": [
+          13,
+          521
+        ],
+        "embeddings": [
+          13,
+          1024
+        ],
+        "log_mel": [
+          672,
+          64
+        ]
+      },
+      "inference_ms": 19.6,
+      "top": [
+        {
+          "rank": 1,
+          "class": "Hammer",
+          "score": 0.3844
+        },
+        {
+          "rank": 2,
+          "class": "Glass",
+          "score": 0.2676
+        },
+        {
+          "rank": 3,
+          "class": "Tools",
+          "score": 0.244
+        },
+        {
+          "rank": 4,
+          "class": "Silence",
+          "score": 0.2314
+        },
+        {
+          "rank": 5,
+          "class": "Chink, clink",
+          "score": 0.2013
+        }
+      ]
+    },
+    {
+      "file": "recordings\\敲门\\敲门.wav",
+      "source_format": "48000 Hz, 2 ch, 16-bit PCM",
+      "source_sample_rate": 48000,
+      "source_channels": 2,
+      "source_bits": 16,
+      "stats": {
+        "duration_s": 14.28,
+        "peak": 0.5194,
+        "peak_dbfs": -5.7,
+        "rms": 0.0411,
+        "dc_offset": -0.0,
+        "clipped_samples": 0,
+        "samples": 228480
+      },
+      "notes": [
+        [
+          "info",
+          "downmixed 2 ch -> 1 ch (channel mean)"
+        ],
+        [
+          "info",
+          "resampled 48000 Hz -> 16000 Hz"
+        ]
+      ],
+      "frames": 29,
+      "shapes": {
+        "scores": [
+          29,
+          521
+        ],
+        "embeddings": [
+          29,
+          1024
+        ],
+        "log_mel": [
+          1440,
+          64
+        ]
+      },
+      "inference_ms": 21.4,
+      "top": [
+        {
+          "rank": 1,
+          "class": "Speech",
+          "score": 0.1551
+        },
+        {
+          "rank": 2,
+          "class": "Inside, small room",
+          "score": 0.1384
+        },
+        {
+          "rank": 3,
+          "class": "Animal",
+          "score": 0.1261
+        },
+        {
+          "rank": 4,
+          "class": "Duck",
+          "score": 0.1142
+        },
+        {
+          "rank": 5,
+          "class": "Quack",
+          "score": 0.1127
+        }
+      ]
+    },
+    {
+      "file": "recordings\\水壶\\kettle_whistle.wav",
+      "source_format": "48000 Hz, 1 ch, 16-bit PCM",
+      "source_sample_rate": 48000,
+      "source_channels": 1,
+      "source_bits": 16,
+      "stats": {
+        "duration_s": 68.096,
+        "peak": 1.1269,
+        "peak_dbfs": 1.0,
+        "rms": 0.1818,
+        "dc_offset": -0.0,
+        "clipped_samples": 0,
+        "samples": 1089536
+      },
+      "notes": [
+        [
+          "info",
+          "resampled 48000 Hz -> 16000 Hz"
+        ]
+      ],
+      "frames": 141,
+      "shapes": {
+        "scores": [
+          141,
+          521
+        ],
+        "embeddings": [
+          141,
+          1024
+        ],
+        "log_mel": [
+          6816,
+          64
+        ]
+      },
+      "inference_ms": 58.1,
+      "top": [
+        {
+          "rank": 1,
+          "class": "Alarm",
+          "score": 0.1732
+        },
+        {
+          "rank": 2,
+          "class": "Fire alarm",
+          "score": 0.1196
+        },
+        {
+          "rank": 3,
+          "class": "Music",
+          "score": 0.0693
+        },
+        {
+          "rank": 4,
+          "class": "Vehicle",
+          "score": 0.0619
+        },
+        {
+          "rank": 5,
+          "class": "Whistle",
+          "score": 0.0512
+        }
+      ]
+    },
+    {
+      "file": "recordings\\烟雾报警\\smoke_alarm_long.wav",
+      "source_format": "48000 Hz, 1 ch, 16-bit PCM",
+      "source_sample_rate": 48000,
+      "source_channels": 1,
+      "source_bits": 16,
+      "stats": {
+        "duration_s": 43.264,
+        "peak": 0.8454,
+        "peak_dbfs": -1.5,
+        "rms": 0.1797,
+        "dc_offset": 0.0,
+        "clipped_samples": 0,
+        "samples": 692224
+      },
+      "notes": [
+        [
+          "info",
+          "resampled 48000 Hz -> 16000 Hz"
+        ]
+      ],
+      "frames": 90,
+      "shapes": {
+        "scores": [
+          90,
+          521
+        ],
+        "embeddings": [
+          90,
+          1024
+        ],
+        "log_mel": [
+          4368,
+          64
+        ]
+      },
+      "inference_ms": 42.0,
+      "top": [
+        {
+          "rank": 1,
+          "class": "Smoke detector, smoke alarm",
+          "score": 0.8645
+        },
+        {
+          "rank": 2,
+          "class": "Alarm",
+          "score": 0.7872
+        },
+        {
+          "rank": 3,
+          "class": "Buzzer",
+          "score": 0.2848
+        },
+        {
+          "rank": 4,
+          "class": "Beep, bleep",
+          "score": 0.1587
+        },
+        {
+          "rank": 5,
+          "class": "Fire alarm",
+          "score": 0.0511
+        }
+      ]
+    },
+    {
+      "file": "recordings\\烟雾报警\\smoke_alarm_standard.wav",
+      "source_format": "48000 Hz, 1 ch, 16-bit PCM",
+      "source_sample_rate": 48000,
+      "source_channels": 1,
+      "source_bits": 16,
+      "stats": {
+        "duration_s": 39.253,
+        "peak": 0.6556,
+        "peak_dbfs": -3.7,
+        "rms": 0.208,
+        "dc_offset": 0.0,
+        "clipped_samples": 0,
+        "samples": 628053
+      },
+      "notes": [
+        [
+          "info",
+          "resampled 48000 Hz -> 16000 Hz"
+        ]
+      ],
+      "frames": 81,
+      "shapes": {
+        "scores": [
+          81,
+          521
+        ],
+        "embeddings": [
+          81,
+          1024
+        ],
+        "log_mel": [
+          3936,
+          64
+        ]
+      },
+      "inference_ms": 40.9,
+      "top": [
+        {
+          "rank": 1,
+          "class": "Beep, bleep",
+          "score": 0.8553
+        },
+        {
+          "rank": 2,
+          "class": "Alarm",
+          "score": 0.6957
+        },
+        {
+          "rank": 3,
+          "class": "Telephone",
+          "score": 0.5285
+        },
+        {
+          "rank": 4,
+          "class": "Ringtone",
+          "score": 0.4843
+        },
+        {
+          "rank": 5,
+          "class": "Smoke detector, smoke alarm",
+          "score": 0.3693
+        }
+      ]
+    },
+    {
+      "file": "recordings\\门铃\\doorbell_classic(1).wav",
+      "source_format": "48000 Hz, 1 ch, 16-bit PCM",
+      "source_sample_rate": 48000,
+      "source_channels": 1,
+      "source_bits": 16,
+      "stats": {
+        "duration_s": 5.786,
+        "peak": 1.0478,
+        "peak_dbfs": 0.4,
+        "rms": 0.0635,
+        "dc_offset": -0.0,
+        "clipped_samples": 0,
+        "samples": 92581
+      },
+      "notes": [
+        [
+          "info",
+          "resampled 48000 Hz -> 16000 Hz"
+        ]
+      ],
+      "frames": 12,
+      "shapes": {
+        "scores": [
+          12,
+          521
+        ],
+        "embeddings": [
+          12,
+          1024
+        ],
+        "log_mel": [
+          624,
+          64
+        ]
+      },
+      "inference_ms": 16.4,
+      "top": [
+        {
+          "rank": 1,
+          "class": "Silence",
+          "score": 0.1739
+        },
+        {
+          "rank": 2,
+          "class": "Doorbell",
+          "score": 0.1611
+        },
+        {
+          "rank": 3,
+          "class": "Music",
+          "score": 0.1525
+        },
+        {
+          "rank": 4,
+          "class": "Mallet percussion",
+          "score": 0.1138
+        },
+        {
+          "rank": 5,
+          "class": "Percussion",
+          "score": 0.1078
+        }
+      ]
+    },
+    {
+      "file": "recordings\\门铃\\doorbell_large.wav",
+      "source_format": "48000 Hz, 1 ch, 16-bit PCM",
+      "source_sample_rate": 48000,
+      "source_channels": 1,
+      "source_bits": 16,
+      "stats": {
+        "duration_s": 12.203,
+        "peak": 0.8369,
+        "peak_dbfs": -1.5,
+        "rms": 0.0475,
+        "dc_offset": -0.0,
+        "clipped_samples": 0,
+        "samples": 195243
+      },
+      "notes": [
+        [
+          "info",
+          "resampled 48000 Hz -> 16000 Hz"
+        ]
+      ],
+      "frames": 25,
+      "shapes": {
+        "scores": [
+          25,
+          521
+        ],
+        "embeddings": [
+          25,
+          1024
+        ],
+        "log_mel": [
+          1248,
+          64
+        ]
+      },
+      "inference_ms": 20.5,
+      "top": [
+        {
+          "rank": 1,
+          "class": "Music",
+          "score": 0.2217
+        },
+        {
+          "rank": 2,
+          "class": "Singing bowl",
+          "score": 0.2183
+        },
+        {
+          "rank": 3,
+          "class": "Bell",
+          "score": 0.214
+        },
+        {
+          "rank": 4,
+          "class": "Silence",
+          "score": 0.1697
+        },
+        {
+          "rank": 5,
+          "class": "Church bell",
+          "score": 0.1123
+        }
+      ]
+    },
+    {
+      "file": "recordings\\门铃\\doorbell_mechanical.wav",
+      "source_format": "48000 Hz, 1 ch, 16-bit PCM",
+      "source_sample_rate": 48000,
+      "source_channels": 1,
+      "source_bits": 16,
+      "stats": {
+        "duration_s": 4.096,
+        "peak": 0.7025,
+        "peak_dbfs": -3.1,
+        "rms": 0.0983,
+        "dc_offset": -0.0,
+        "clipped_samples": 0,
+        "samples": 65536
+      },
+      "notes": [
+        [
+          "info",
+          "resampled 48000 Hz -> 16000 Hz"
+        ]
+      ],
+      "frames": 8,
+      "shapes": {
+        "scores": [
+          8,
+          521
+        ],
+        "embeddings": [
+          8,
+          1024
+        ],
+        "log_mel": [
+          432,
+          64
+        ]
+      },
+      "inference_ms": 12.7,
+      "top": [
+        {
+          "rank": 1,
+          "class": "Silence",
+          "score": 0.3543
+        },
+        {
+          "rank": 2,
+          "class": "Alarm",
+          "score": 0.2574
+        },
+        {
+          "rank": 3,
+          "class": "Telephone",
+          "score": 0.1935
+        },
+        {
+          "rank": 4,
+          "class": "Telephone bell ringing",
+          "score": 0.1866
+        },
+        {
+          "rank": 5,
+          "class": "Buzzer",
+          "score": 0.1534
+        }
+      ]
+    },
+    {
+      "file": "recordings\\门铃\\门铃.wav",
+      "source_format": "48000 Hz, 2 ch, 16-bit PCM",
+      "source_sample_rate": 48000,
+      "source_channels": 2,
+      "source_bits": 16,
+      "stats": {
+        "duration_s": 8.256,
+        "peak": 0.3072,
+        "peak_dbfs": -10.3,
+        "rms": 0.0436,
+        "dc_offset": -0.0,
+        "clipped_samples": 0,
+        "samples": 132096
+      },
+      "notes": [
+        [
+          "info",
+          "downmixed 2 ch -> 1 ch (channel mean)"
+        ],
+        [
+          "info",
+          "resampled 48000 Hz -> 16000 Hz"
+        ]
+      ],
+      "frames": 17,
+      "shapes": {
+        "scores": [
+          17,
+          521
+        ],
+        "embeddings": [
+          17,
+          1024
+        ],
+        "log_mel": [
+          864,
+          64
+        ]
+      },
+      "inference_ms": 19.6,
+      "top": [
+        {
+          "rank": 1,
+          "class": "Chime",
+          "score": 0.4583
+        },
+        {
+          "rank": 2,
+          "class": "Wind chime",
+          "score": 0.4125
+        },
+        {
+          "rank": 3,
+          "class": "Bell",
+          "score": 0.4083
+        },
+        {
+          "rank": 4,
+          "class": "Telephone",
+          "score": 0.0897
+        },
+        {
+          "rank": 5,
+          "class": "Turkey",
+          "score": 0.0789
+        }
+      ]
+    }
+  ]
+}
